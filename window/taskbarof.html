@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/98.css" />
+  </head>
+  <body>
+    <div class="window">
+      <div>
+        <button class="start"><img src="windows.png"><b>Start</b></button>
+        <break></break>
+        <button class="task active">Stream Starting Soon...</button>
+        <button class="task">Stream</button>
+        <button class="task">Chat</button>
+        <button class="task">Friends</button>
+      </div>
+      <div>
+        <break></break>
+        <div class="active window tiny">
+          <p id="time">00:00</p>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    var time = document.querySelector("#time");
+    setInterval(() => {
+      time.innerHTML = new Date().toLocaleTimeString();
+    }, 0)
+  </script>
+  <style>
+    break {
+      width: 2px;
+      height: 100%;
+      display: inline-block;
+      box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    button.task {
+      text-align: left;
+      padding: 0 6px;
+    }
+    button.start {
+      min-width: 0;
+      padding: 0 8px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-content: center;
+      align-items: center;
+      gap: 4px;
+    }
+    .active {
+      box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+    }
+    button * {
+      vertical-align: bottom;
+    }
+    div.window:not(.tiny) {
+      width: 100vw;
+      height: 100vh;
+      box-sizing: border-box;
+      display: grid;
+      grid-template-columns: auto auto;
+    }
+    div.window:not(.tiny) > div {
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-content: stretch;
+      align-items: stretch;
+      gap: 4px;
+      box-sizing: border-box;
+    }
+    div.window.tiny {
+      padding: 4px 12px;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-content: center;
+      align-items: center;
+    }
+    div.window.tiny p {
+      padding: 0;
+      margin: 0;
+      height: 11px;
+    }
+    div.window:not(.tiny) > div:last-child {
+      justify-content: flex-end;
+    }
+  </style>
+</html>

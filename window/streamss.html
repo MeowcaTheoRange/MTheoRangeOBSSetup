@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/98.css" />
+  </head>
+  <body>
+    <div class="window">
+      <div class="title-bar">
+        <div class="title-bar-text">Stream Starting Soon...</div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize"></button>
+          <button aria-label="Maximize"></button>
+          <button aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-body">
+        <fieldset>
+          <legend>Windows 98 Tip</legend>
+          <p style="text-align: center;" id="tip">Stream Starting Soon</p>
+        </fieldset>
+        <p style="text-align: center;position: absolute;right: 20px;bottom:40px;" id="time">Next tip in 10</p>
+        <input style="position: absolute;right: 12px;bottom:12px;" type="submit" value="OK"  />
+      </div>
+    </div>
+  </body>
+  <script>
+    var tip = document.querySelector("#tip");
+    var time = document.querySelector("#time");
+    var quoteArray = [
+      "Yo! What's up!",
+      "Stream hasn't started yet...",
+      "But hang tight!",
+      "We'll start in just a little bit!",
+      "Stream Starting Soon"
+    ];
+    var i = 0;
+    var t = 9;
+    window.setInterval(() => {
+      time.innerHTML = "Next tip in " + t;
+      t--;
+      if (t < 0) {
+        t = 10;
+        tip.innerHTML = quoteArray[i];
+        i++;
+        if (i >= quoteArray.length) i = 0;
+      }
+    }, 1000);
+  </script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    * {
+      font-smooth: never;
+    }
+    div.window {
+      width: calc(100vw - 6px);
+      height: calc(100vh - 6px);
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-content: center;
+      align-items: stretch;
+    }
+    .window-body {
+      height: 100%;
+    }
+
+    fieldset {
+      height: calc(100% - 30px);
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+    }
+  </style>
+</html>
